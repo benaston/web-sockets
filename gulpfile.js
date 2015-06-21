@@ -6,7 +6,7 @@ const path = require('path');
 const packageJson = require('./package.json');
 const requireDir = require('require-dir');
 const partial = require('partial-application').partial;
-const tasks = requireDir('./src/javascripts/gulp-tasks', {
+const tasks = requireDir('./src/javascripts/server/gulp-tasks', {
 	recurse: false
 });
 const sharedMemory = { css: null, js: null, webComponents: {} };

@@ -12,25 +12,8 @@ const concat = require('gulp-concat');
 const urlEmbed = require('gulp-css-base64');
 const uglify = require('gulp-uglify');
 const streamqueue = require('streamqueue');
-const getDirectories = require('../server/get-directories');
-
-var Stream = require('stream');
-
-function slogo() {
-	var stream = new Stream.Transform({
-			objectMode: true
-		}),
-		args = [].slice.call(arguments)
-		.map(a => (typeof a === 'function' ? a() : a))
-
-	stream._transform = function(data, encoding, callback) {
-
-		console.log.apply(null, args);
-		callback(null, data);
-	};
-
-	return stream;
-}
+const getDirectories = require('../utils/get-directories');
+const toBase64 = require('../utils/to-base-64');
 
 module.exports = function(options) {
 
@@ -73,19 +56,17 @@ module.exports = function(options) {
 					.pipe(rename('index.html'))
 					.pipe(this.dest(path.join(dir, options.dir.dist)))
 					.pipe(tap(function(file) {
-						sharedMemory.webComponents[dir.substr(dir.lastIndexOf('/'))] = utf8_to_b64(file.contents.toString());
+						sharedMemory.webComponents[dir.substr(dir.lastIndexOf('/'))] = toBase64(file.contents.toString());
 					}));
 
-				// JS and CSS can happen in parallel, HTML must happen afterwards.
+				// streamqueue will run the streams to completion in order.
+				// merge was attempted for js and css, but I couldn't get 
+				// it to work.
 				return streamqueue(jsTask, cssTask, htmlTask);
 			}.bind(this));
 
 			return merge(tasks);
 		},
 	};
-
-	function utf8_to_b64(str) {
-		return new Buffer(str).toString('base64');
-	}
 
 };

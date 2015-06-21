@@ -1,3 +1,11 @@
-# wizerati-ui-prototype
+# web-sockets
 
-This contains static HTML and CSS corresponding to UI elements of Wizerati.
+To build:
+
+```javascript
+node --harmony --debug $(which gulp) default
+```
+
+Todo:
+
+ - Create  authoritative examples for each UI element.
