@@ -1,0 +1,493 @@
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #items-of-interest-panel {
+    transition: -webkit-transform 1s cubic-bezier(0.2, 0.3, 0.25, 0.9);
+    /*for sliding whole lot when moving between comparison list states*/
+}
+.s-i-content, .p-i-content {
+    transition: -webkit-transform 1s cubic-bezier(0.2, 0.3, 0.25, 0.9), width .7s cubic-bezier(0.2, 0.3, 0.25, 0.9) 1.05s;
+    /*DELAY - IMPORTANT that is longer than the duration of the preceding animation to avoid Safari rendering flash. Reduce JANK that occurs when animating concurrently. For sliding of individual selected item or pinned items*/
+}
+#items-of-interest-panel {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    /*limits height of items of interest, forcing overflow:scroll*/
+    
+    z-index: 0;
+    /*5=tab-bar, 4=my-account-panel 3=search-form-panel, 2=bookmarks-panel, 1=result-list-panel, 0=ioi-panel*/
+    
+    -webkit-transform: translate3d(400px, 0, 0);
+    /*73 + 327 needed because both bookmarks and result list are in containers of width 0. translate3d might be more performant than translate*/
+    
+    opacity: 0;
+    word-break: break-word;
+    /*required to avoid horizontal springy scroll on iOS*/
+}
+body[data-items-of-interest-mode='1'] #items-of-interest-panel {
+    -webkit-transform: translate3d(73px, 0, 0);
+    /*width of tab bar*/
+}
+body[data-items-of-interest-mode='1'] .s-i-content {
+    /*must be applied to an element with a width - hence the content*/
+    
+    -webkit-transform: translate3d(-100%, 0, 0);
+}
+.lbl-content.selected {
+    color: white;
+    background: rgb(0, 122, 255);
+}
+.lbl-content {
+    border-radius: 5px;
+    line-height: 1rem;
+    /*padding: 2px 0 2px 0;*/
+    
+    padding: 6px 0;
+}
+.menu .btn-s {
+    position: relative;
+    /*ensure focus indicator works as expected*/
+    
+    color: rgb(0, 122, 255);
+    border-color: rgba(255, 255, 255, .1);
+}
+/* Correct the spacing appearance given the differing word lengths of the menu items 'save' and 'compare' */
+
+.menu li:nth-of-type(2) {
+    margin-left: 1px;
+    /* Empirical. */
+    
+    margin-right: 7px;
+    /* Empirical. */
+}
+body[data-hover-is-enabled='true'] .menu .btn-s:enabled:hover {
+    box-shadow: rgba(255, 255, 255, .4) 0 0 5px 0;
+}
+.menu .btn-s ~ .lbl {
+    color: #007aff;
+    /*position: relative;*/
+    
+    position: absolute;
+    margin: auto;
+    /*margin-top: -15px;*/
+    
+    top: calc(50% - .55rem);
+    width: 100%;
+}
+body[data-ui-mode='1'] #items-of-interest-panel {
+    opacity: 1;
+}
+.s-i-c {
+    z-index: 1;
+    /*must remain infront of pinned items*/
+}
+.btn-hide {
+    font-size: 2.3rem;
+}
+.btn-action {
+    font-size: 3rem;
+}
+#p-i-c, .s-i-c {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    /*limits height of items of interest, forcing overflow:scroll*/
+    
+    vertical-align: top;
+    /*important*/
+    
+    -webkit-filter: opacity(100%);
+}
+#p-i-c.buffer, .s-i-c.buffer {
+    pointer-events: none;
+    -webkit-filter: opacity(0);
+}
+.s-i .i-o-i-c >:not(.menu-container), .p-i .i-o-i-c >:not(.menu-container), .p-i .i-o-i-c .item-metadata {
+    -webkit-filter: opacity(100%);
+    transition: -webkit-filter .2s ease-out;
+    z-index: -1;
+    /*required to circumvent transform z-index bug in webkit when transforms applied*/
+    
+    -webkit-backface-visibility: hidden;
+    /*this fixes a chrome bug whereby the content remains blurry after the filter transition is complete*/
+}
+.s-i.hidden .i-o-i-c >:not(.menu-container), .p-i.hidden .i-o-i-c >:not(.menu-container), .s-i.hidden .i-o-i-c .item-metadata, .p-i.hidden .i-o-i-c .item-metadata {
+    -webkit-filter: opacity(10%);
+    transition: -webkit-filter .2s ease-out;
+}
+.s-i, .p-i {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    vertical-align: top;
+    /*the following two styles stop a rendering issue in safari (flicker of unrendered content)*/
+    
+    -webkit-transform: scale(1);
+    /*required to circumvent transform z-index bug in webkit when transforms applied*/
+}
+.s-i-content, .p-i-content {
+    position: relative;
+    /* New. */
+    
+    width: 340px;
+    overflow: hidden;
+    height: 100%;
+    background-color: white;
+    /*should be removed if going with the blur approach*/
+    
+    -webkit-overflow-scrolling: touch;
+}
+.p-i:not(:last-child) .p-i-content {
+    box-shadow: 1px 0 1px -1px #0c0917;
+}
+.s-i {
+    z-index: 6;
+}
+.p-i:nth-of-type(1) {
+    z-index: 5;
+}
+.p-i:nth-of-type(2) {
+    z-index: 4;
+}
+.p-i:nth-of-type(3) {
+    z-index: 3;
+}
+.p-i:nth-of-type(4) {
+    z-index: 2;
+}
+.p-i:nth-of-type(5) {
+    z-index: 1;
+}
+.p-i:nth-of-type(6) {
+    z-index: 0;
+}
+.collapsed > .s-i-content {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+}
+.menu {
+    display: block;
+    /*required to ensure full width of item is used*/
+    /*margin-right: 10px;*/
+    
+    margin-top: 0;
+    padding-top: 0px;
+    -webkit-user-select: none;
+}
+.menu > li {
+    position: relative;
+    top: calc(50% - 38px);
+}
+.menu .centered-text {
+    vertical-align: top;
+}
+.menu .is-favorite {
+    color: white;
+}
+li:nth-child(1) .mi {
+    margin-right: 2px;
+}
+li:nth-child(2) .mi {
+    margin-left: 2px;
+}
+#items-of-interest-panel .menu {
+    background: rgba(249, 249, 249, .9);
+    text-align: center;
+    position: relative;
+    border-radius: 0 0 0 15px;
+    border-bottom: 1px solid rgba(0, 95, 167, .35);
+    border-left: 1px solid rgba(0, 95, 167, .35);
+    margin: 0;
+    padding: 0;
+    right: 0;
+    left: auto;
+    height: 46px;
+}
+.table-location-industry {
+    margin-left: 20px;
+}
+.table-title-rate, .table-location-industry {
+    font-size: .95rem;
+}
+.no-clear {
+    clear: none;
+}
+.apply-button-container {
+    float: right;
+    margin-left: 14px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    width: 100px;
+}
+.s-i .table-bordered, .p-i .table-bordered {
+    margin-top: 0;
+    border: 0;
+    display: inline-block;
+}
+.s-i table td:nth-of-type(1):nth-last-of-type(2), .p-i table td:nth-of-type(1):nth-last-of-type(2) {
+    width: 60px;
+    text-align: right;
+    /*padding-right: 31px;*/
+    
+    color: silver;
+    font-size: .9rem;
+}
+.item-metadata, .item-metadata code {
+    color: #999;
+}
+.contact {
+    margin-bottom: 40px;
+}
+.item-metadata {
+    text-align: right;
+    margin-top: 27px;
+}
+.s-i .table-bordered td, .p-i .table-bordered td {
+    padding: 3px;
+    text-align: right;
+}
+.s-i table td:nth-of-type(2):nth-last-of-type(1), .p-i table td:nth-of-type(2):nth-last-of-type(1) {
+    width: calc(100% - 70px);
+    text-align: left;
+    padding-left: 20px;
+}
+.item-of-interest table {
+    width: 100%;
+    max-width: 600px;
+}
+.menu li {
+    vertical-align: top;
+    /*Ensures menu items stay at the top!*/
+}
+.menu .btn-s {
+    /*box-shadow: 0 0 0 1px;*/
+}
+.description {
+    float: left;
+}
+.m-i {
+    width: 84px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    /*box-shadow: 0 0 0 1px;*/
+    /*height: 69px;*/
+    
+    top: -19px;
+    /*Attempt to get a visual vertical alignment because the menu height is less than button diameter.*/
+}
+.i-o-i-p-c {
+    /*margin: 0 25px 30px 25px;*/
+    
+    margin: 0 33px 30px 33px;
+}
+.i-o-i-p-c:first-child {
+    /*margin: 15px 25px 10px 25px;*/
+    
+    margin: 15px 33px 10px 33px;
+}
+.i-o-i-p-c-hr {
+    margin: 15px 0 0 25px;
+    /*padding: 15px 0px 30px 25px;*/
+    /*box-sizing: border-box;*/
+}
+.i-o-i-hr {
+    width: 100%;
+}
+.i-o-i-c {
+    position: absolute;
+    width: 100%;
+    overflow-y: scroll;
+    /* New. Moved from a surrounding div. */
+    
+    height: 100%;
+    /* New. Moved from a surrounding div. */
+}
+.selected-top {
+    background: rgba(0, 0, 0, .1);
+    box-shadow: 0 -15px 0 25px rgba(0, 0, 0, .1);
+}
+.info {
+    display: block;
+    color: #999;
+    list-style: none;
+}
+.cl {
+    color: #999;
+}
+.info li {
+    display: inline-block;
+    margin-right: 10px;
+    padding-right: 10px;
+    /*height: 1rem;*/
+}
+.country {
+    text-transform: uppercase;
+}
+.skills {
+    margin-top: 12px;
+}
+.info li:not(:last-child) {
+    border-right: 1px solid #d6d6d6;
+}
+.menu-container {
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 0;
+    border-bottom: 0;
+    width: 171px;
+    /* Empirical. */
+}
+.p-i .summary-inline, .s-i-c .summary-table {
+    display: none;
+}
+.summary-table {
+    min-height: 172px;
+    /*better change of correct horizontal alignment*/
+}
+.s-i-c .summary-inline, .p-i .summary-table {
+    display: block;
+}
+#selected-item-container-2 {
+    background: blue;
+}
+.item-metadata h1 {
+    margin-bottom: 18px;
+}
+.item-metadata h3 {
+    text-align: right;
+}
+.item-of-interest p {
+    margin-bottom: 2rem;
+}
+.item-of-interest .location, .item-of-interest .country {
+    font-size: .8rem;
+}
+.item-of-interest li {
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+.item-of-interest ul, .item-of-interest ol {
+    margin-bottom: 20px;
+}
+.item-metadata h3, .itemContact h3 {
+    line-height: .8rem;
+}
+.updatedDateTime {
+    font-size: .8rem;
+}
+.frm-bookmark .lbl, .frm-pin .lbl {
+    white-space: nowrap !important;
+    /*avoid wrapping 'un-bookmark'*/
+}
+/*safari does not yet support prefix-less flexbox styles*/
+
+.flex-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -webkit-align-items: stretch;
+}
+.flex-item:nth-child(1) {
+    -webkit-order: 0;
+    -webkit-flex: 0 0 62px;
+    /*height of the menu on items of interest*/
+    
+    -webkit-align-self: auto;
+}
+.flex-item:nth-child(2) {
+    -webkit-order: 0;
+    -webkit-flex: 1 0 auto;
+    -webkit-align-self: auto;
+    overflow-y: scroll;
+    /*enables the scroll-bars beneath the menu*/
+    
+    position: relative;
+    /*to enable correct positioning of child absolute positioned container*/
+}
+.i-o-i-t {
+    /*min-width: 250px;*/
+    
+    display: block;
+    width: calc(100% - 164px);
+    line-height: 23px;
+    min-height: 55px;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
+.p-i .i-o-i-t {
+    display: block;
+    width: 100%;
+    margin-top: 82px;
+}
+body[data-items-of-interest-mode='1'] .empty-message-container:only-child {
+    /*visibility: visible;*/
+    
+    display: inline-block;
+}
+.empty-message-container {
+    display: none;
+    width: 285px;
+    /*empirical - because we are maintaining this in the flow of the document, we need to make it narrow enough to ensure it never pushes pushes beyond a narrow selected item*/
+    
+    position: absolute;
+    top: 0;
+    left: 42px;
+    color: slategray;
+    margin-top: 17px;
+    -webkit-backface-visibility: hidden;
+}
+.menu .lbl.pulse {
+    -webkit-animation: pulse .2s 1 0;
+}
+.btn-action.applied {
+    font-family: helvetica-pro-light;
+    font-size: .8rem;
+    color: rgb(116, 148, 165);
+    background-color: rgba(149, 176, 190, .8);
+    border-color: rgba(255, 255, 255, .05);
+}
+.i-o-i-c p {
+    margin-bottom: 10px;
+}
+/*"narrow screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+
+@media only screen and (max-device-width: 568px) {
+    #items-of-interest-panel {
+        -webkit-transform: translate3d(245px, 0, 0);
+        /*96 + 200 needed because both bookmarks and result list are in containers of width 0. translate3d might be more performant than translate*/
+    }
+    body[data-items-of-interest-mode='1'] #items-of-interest-panel {
+        -webkit-transform: translate3d(45px, 0, 0);
+        /*width of tab bar*/
+    }
+    .m-i {
+        top: -10px;
+        width: 65px;
+    }
+    .m-i .btn {
+        width: 65px;
+    }
+    .m-i .lbl {
+        display: none;
+    }
+    .flex-item:nth-child(1) {
+        -webkit-flex: 0 0 45px;
+        /*height of lower menu on iOS Safari*/
+    }
+    .empty-message-container {
+        width: 225px;
+        left: 25px;
+    }
+}

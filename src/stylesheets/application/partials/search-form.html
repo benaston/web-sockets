@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <link rel="stylesheet" href="../reset/third-party-reset.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-non-form.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-form.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-buttons-rotating.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-form-elements.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-faces.css" />
+    <link rel="stylesheet" href="./wizerati-style-search-form.css" />
+</head>
+<body 
+    data-ui-mode="0" 
+    data-are-transitions-enabled="true" 
+    data-modal="-1" 
+    data-hover-is-enabled="true" 
+    data-is-mobile-device="false" 
+    data-items-of-interest-mode="0" >
+<div id="search-form-container" class="test">
+    <form id="search-form" class="test" name="search-form" action="/search" method="GET">
+    <div id="search-buttons-container"><div class="cancel-button-container">
+            <div class="r-b-c large">
+                <button form="frm-cancel-search" id="btn-cancel-search" tabindex="1" class="btn" data-is-waiting="true"></button>
+                <span class="focus-indicator"></span>
+                <span class="icon">Cancel</span>
+            </div>
+        </div><div class="search-button-container">    
+            <div class="c--r-b large">
+                <button type="submit" id="btn-search" tabindex="1" class="btn" data-is-waiting="false"></button>
+                <span class="focus-indicator"></span>
+                <span class="icon">Search</span>                
+            </div>
+
+            <!-- <div class="r-b-c large">
+                <button type="submit" id="btn-search" tabindex="1" class="btn" data-is-waiting="true"></button>
+                <span class="focus-indicator"></span>
+                <span class="icon">Search</span>
+            </div> -->
+        </div>
+        </div>
+        <div class="search-fields">
+          <input type="search" id="keywords" name="keywords" ''="" class="field" required="" placeholder="e.g. 'javascript london'" autocorrect="off" autocapitalize="none" tabindex="1">
+        </div>
+        <div class="search-filters">
+          <span style="
+        text-align: left;
+        display: inline-block;
+        width: 100%;
+        margin-left: 23px;
+        margin-bottom: 7px;
+    ">Minimum rate (GBP/day)</span>
+            <ol style="margin: 0 17px;display: block;">
+                <li><input id="r200" class="radio" name="r" type="radio" value=">200" tabindex="1" checked="checked">
+                    <label for="r200" class="lbl">200</label></li>
+                <li><input id="r250" class="radio" name="r" type="radio" value=">250" tabindex="1">
+                    <label for="r250" class="lbl">250</label></li>
+                <li><input id="r300" class="radio" name="r" type="radio" value=">300" tabindex="1">
+                    <label for="r300" class="lbl">300</label></li>
+                <li><input id="r350" class="radio" name="r" type="radio" value=">350" tabindex="1">
+                    <label for="r350" class="lbl">350</label></li>
+                <li><input id="r400" class="radio" name="r" type="radio" value=">400" tabindex="1">
+                    <label for="r400" class="lbl">400</label></li>
+                <li><input id="r450" class="radio" name="r" type="radio" value=">450" tabindex="1">
+                    <label for="r450" class="lbl">450</label></li>
+                <li><input id="r500" class="radio" name="r" type="radio" value=">500" tabindex="1">
+                    <label for="r500" class="lbl">500</label></li>
+                <li><input id="r550" class="radio" name="r" type="radio" value=">550" tabindex="1">
+                    <label for="r550" class="lbl">550</label></li>
+                <li><input id="r600" class="radio" name="r" type="radio" value=">600" tabindex="1">
+                    <label for="r600" class="lbl">600</label></li>
+            </ol>
+        </div>    
+    </form>
+</div>
+</body>
+</html>

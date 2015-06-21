@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../reset/third-party-reset.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-non-form.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-form.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-buttons-rotating.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-faces.css" />
+    <link rel="stylesheet" href="./wizerati-style-result-list-panel.css" />
+    <link rel="stylesheet" href="./wizerati-style-result.css" />
+</head>
+<body 
+    data-ui-mode="1" 
+    data-are-transitions-enabled="true" 
+    data-modal="-1" 
+    data-hover-is-enabled="true" 
+    data-is-mobile-device="false" 
+    data-items-of-interest-mode="0" 
+    class="testt"
+    style="height: 100%; position: absolute;"
+>    
+    <div id="c--result-list-panel" data-mode="0">
+        <section id="result-list-panel" >
+            <header>
+                <form id="frm-edit-search" action="/searchformmode/update">
+                    <input name="mode" type="hidden" value="0">
+                    <div class="c--r-b long btn-edit-search">
+                        <button type="submit" id="btn-show-search" tabindex="1" class="btn" data-is-waiting="true" data-is-selected="false">            
+                        </button><span class="focus-indicator">            
+                        </span><span class="icon ionicons">&#xf100;
+                        </span><label for="btn-show-search" class="icon lower">javascript london</label>
+                    </div></form>
+            </header>
+            <ul id="result-list">
+                <li class="c--result" style="" data-id="GUID1" 
+                data-is-read="false" 
+                data-is-actioned="true">                    
+                    <a tabindex="1" href="/selecteditem/update?id=GUID1&amp;source=0">
+                        <h3 class="title">Senior Python / Oracle Developer</h3>
+                        <p class="line-2">
+                            <span class="organisation">Twenty Recruitment Group</span>
+                            <span class="updated"> 10 months ago</span>
+                        </p>
+                        <p class="line-3">
+                            <span class="rate">
+                                <span class="rate-value">500</span>
+                                <span class="rate-currency">GBP</span><span class="rate-unit">/day</span>
+                            </span>
+                            <span class="location">London</span>
+                        </p>
+                        <ul class="states">
+                            <li class="state is-unread">unread</li>
+                            <li class="state is-actioned">actioned</li>
+                            <li class="state is-bookmark">saved</li>
+                            <li class="state is-in-comparison-list">in comparison list</li>
+                        </ul>
+                    </a>                    
+                    <hr />
+                </li>
+               
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+body.test  * {
+    box-shadow: 0 0 0 1px inset;
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #c--result-list-panel[data-mode='0'] #result-list-panel {
+    transition: -webkit-filter .2s ease-out;
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #c--result-list-panel[data-mode='1'] #result-list-panel {
+    transition: -webkit-filter .2s ease-out;
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #result-list-panel {
+    transition: -webkit-transform 1s cubic-bezier(0.2, 0.3, 0.25, 0.9), -webkit-filter .2s ease-out;
+}
+#c--result-list-panel {
+    width: 0;
+    height: 100%;
+    overflow: visible;
+    position: relative;
+    display: inline-block;
+    z-index: 1; /*needs to be behind bookmark list*/
+}
+body[data-ui-mode='0'] #c--result-list-panel {
+    width: 100%;
+    -webkit-filter: opacity(0);
+}
+#result-list-panel {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 327px;
+    margin-left: 73px;
+    vertical-align: top;
+    z-index: 1; /*5=tab-bar, 4=my-account-panel 3=search-form-panel, 2=bookmarks-panel, 1=result-list-panel, 0=ioi-panel*/    
+    background-color: white; /*avoids visibility of items sliding in from behind panel*/    
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(160, 159, 164, .7);
+    word-break: break-word; /*required to avoid horizontal springy scroll on iOS*/
+    line-height: 0;
+}
+/*filters? should only be applied when needed due to breakage of fixed position search form*/
+body[data-ui-mode='1'] #c--result-list-panel[data-mode='0'] #result-list-panel {    
+    -webkit-filter: opacity(1);
+    pointer-events: auto;
+}
+/* added for pre-start*/
+body[data-ui-mode='-1'] #c--result-list-panel[data-mode='1'] #result-list-panel, body[data-ui-mode='1'] #c--result-list-panel[data-mode='1'] #result-list-panel {
+    -webkit-filter: opacity(0);
+    pointer-events: none;
+}
+body[data-items-of-interest-mode='0'] #result-list-panel {
+    -webkit-transform: translate3d(0, 0, 0);
+}
+/*pinned items expanded*/
+body[data-items-of-interest-mode='1'] #result-list-panel {
+    -webkit-transform: translate3d(-480px, 0, 0);
+    box-shadow: none;
+}
+body[data-ui-mode='0'] #result-list-panel {
+    width: 100%;
+    box-shadow: none;
+    background: none;
+    margin: 0; /* Cancels out the massive margin left we currently have on this. */
+}
+#result-list-panel[data-mode='1'] #result-list {
+    pointer-events: none;
+}
+#result-list-panel header {    
+    background: rgba(249, 249, 249, 1);    
+    border-bottom: 1px solid rgba(0, 95, 167, 0.35); /* We have a subtle blue hue to the border at the top of the page. We avoid box-shadow for perf reasons. */    
+    box-sizing: border-box;
+    height: 72px; /* This fixes what I believe to be a bug in webkit rendering whitespace when the overflow ellipsis is used inside. */
+}
+#c--result-list-panel header .c--r-b {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#c--result-list-panel header .c--r-b .icon.lower {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#c--result-list-panel #result-list {
+    width: 100%;
+    padding: 0;
+    line-height: 0; /*important for when hiding items*/    
+    position: relative;
+    left: 0; /*required for transition*/    
+    -webkit-filter: opacity(100%); /*in order to get the return transition from the search from working*/    
+    -webkit-backface-visibility: hidden; /*fix blur resulting from filter*/
+}
+/*"narrow-screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+@media only screen and (max-device-width: 568px) {
+    #result-list-panel {
+        width: 200px;
+        margin-left: 45px;
+    }
+    #result-list-panel header, .result-list-search-summary-container {
+        height: 45px;
+    }
+    label[for='btn-change-search'] {
+        line-height: 45px;
+        padding: 3px 15px 0 0;
+    }
+}

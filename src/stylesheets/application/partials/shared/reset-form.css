@@ -1,0 +1,75 @@
+html select,
+html textarea,
+html input[type="text"],
+html input[type="password"],
+html input[type="email"],
+html input[type="search"],
+html input[type="tel"] {
+    display: inline-block;
+    width: 400px;
+    margin: 20px 20px 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    color: #333;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(0,95,167,.15);
+    padding: 15px 5px 12px 5px;
+}
+
+form {
+    display: inline-block; /* Made inline-block, so that the form dimensions more intuitively match the content. Attempt at making form tags "invisible". Form tags are not designed to be rendered themselves? */
+    -webkit-user-select: none;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield; /*negate safari horrible styling*/
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0; /*we avoid display none, because it suppresses the built-in required validation message*/
+    cursor: pointer;
+}
+
+label, .lbl {
+    position: relative; /*enables absolute positioning of the focus indicator on :after*/
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+}
+
+body[data-hover-is-enabled='true'] input[type="radio"]:not(:checked) + label:hover {
+    border-color: rgba(255, 200, 0, 0.3);
+}
+
+input[type="radio"]:checked + label {
+    background-color: rgba(0, 122, 255, 1);
+    color: white;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: transparent;
+}
+
+label:focus {
+    outline: 5px auto rgb(230, 240, 248);
+    outline-offset: 2px;
+}
+
+.btn:disabled + label,
+button:disabled + label {
+    opacity: .1;
+}
+
+::-webkit-search-cancel-button {
+    display: none; /*too much bother to get this styled correctly*/
+}

@@ -1,0 +1,127 @@
+/* c--c-l-h-u stands for component-comparison-list-heads-up */
+body.test * {
+    box-shadow: 0 0 0 1px inset;
+}
+#c--c-l-h-u.pulse {
+    -webkit-animation: pulse-c-l-h-u .4s 1 0; /* Duration, iteration count, initial delay. */
+}   
+#c--c-l-h-u .c--r-b.long.centered-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: rotate(-45deg);
+}
+#c--c-l-h-u .c--r-b.long .btn {
+    top: calc(50% + 7px); /* Empirical. */   
+}
+#c--c-l-h-u .c--r-b.long .icon:not(.lower) {
+    width: 100px;
+    left: calc(50% - 50px);
+    display: inline-block;
+    top: calc(50% + 7px); /* Empirical. */   
+    line-height: normal;
+}
+#c--c-l-h-u::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: relative;
+    border-bottom: 180px solid rgba(249,249,249,.9);
+    border-left: 180px solid transparent;
+    right: 0px;
+    margin: 0;
+    bottom: 0px;
+}
+#c--c-l-h-u::after {
+    content: '';
+    display: block;
+    width: 257px;
+    height: 1px;
+    z-index: 999999;
+    right: -38px;
+    top: 89px;
+    position: absolute;
+    -webkit-transform: rotate(-45deg);
+    background: rgba(0,95,167,.35);
+}
+#c--c-l-h-u {
+    text-align: center;
+    position: fixed;
+    display: block;
+    width: 180px;
+    height: 180px;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+#c--c-l-h-u[data-count='0/4'] label[for=btn-comparison-list] {
+    pointer-events: none;
+}
+#c--c-l-h-u .label {
+    margin-top: 10px;
+    font-size: .9rem;
+    color: #007aff;
+}
+#c--c-l-h-u .menu {
+    position: relative;
+}
+#c--c-l-h-u .menu li {
+    display: inline-block;
+    width: 20px; /*empirical*/
+    text-align: center;
+}
+#c--c-l-h-u[data-count='0/4'] {
+    -webkit-filter: opacity(0);
+    pointer-events: none;
+}
+#c--c-l-h-u .menu li::before {
+    content: '\f25a';    
+    display: block;
+    font-family: ionicons;
+    font-size: 2rem;
+    color: #007aff;
+}
+#c--c-l-h-u[data-count='3/4'] .menu li:nth-child(4)::before {
+    content: '\f25c';
+    color: silver;
+}
+#c--c-l-h-u[data-count='2/4'] .menu li:nth-child(3)::before, 
+#c--c-l-h-u[data-count='2/4'] .menu li:nth-child(4)::before {
+    content: '\f25c';
+    color: silver;
+}
+#c--c-l-h-u[data-count='1/4'] .menu li:nth-child(2)::before, 
+#c--c-l-h-u[data-count='1/4'] .menu li:nth-child(3)::before, 
+#c--c-l-h-u[data-count='1/4'] .menu li:nth-child(4)::before {
+    content: '\f25c';
+    color: silver;
+}
+@-webkit-keyframes pulse-c-l-h-u {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+/*iPhone landscape - minus status bar - note tethering not supported here!*/
+@media only screen and (max-device-height: 568px) {
+}
+/*"narrow-screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+@media only screen and (max-device-width: 568px) {
+}
+@media only screen and (max-device-height: 568px ) and (orientation: landscape) {
+}

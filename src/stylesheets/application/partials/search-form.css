@@ -1,0 +1,198 @@
+body[data-ui-mode='0'] #search-form-container {
+    display: inline-block; /* This shrink-wraps the container around the contents width. */
+}
+#search-form-container.test, 
+#search-form-container.test * {
+    box-shadow: 0 0 0 1px inset;
+}
+#keywords.shake {
+    -webkit-animation: shake .8s 1 0;
+}
+#keywords {
+    width: 460px;
+    padding-right: 79px;
+    font-size: 1.2rem;
+    line-height: normal;
+    /* Note regarding the height specification here: MS Windows calculates a 
+    52px height which makes vertical alignment look wrong. I believe this to 
+    be the result of font-rendering differences between Windows and OSX. 
+    See: http://stackoverflow.com/questions/17597964/why-is-there-a-font-face-difference-in-line-height-on-windows-and-mac-os-x 
+    */
+    height: 53px;
+    margin: 0; /* Force a reset on this. */
+}
+#keywords::-webkit-input-placeholder {
+    font-size: 1.2rem;
+    line-height: normal;
+    vertical-align: middle;
+}
+body[data-ui-mode='1'] #keywords {
+    width: 100%;
+    padding-right: 0;
+}
+body[data-ui-mode='1'] #keywords {
+    margin: 20px 0 0 0px;
+}
+body[data-ui-mode='1'] #search-form-container {
+    max-width: 650px; /* Empirical, so the filters can flow in a single line. */
+}
+body[data-ui-mode='1'] .search-fields {
+    width: 100%;
+    padding-left: 22px;
+    padding-right: 22px;
+    box-sizing: border-box;
+    margin-top: 42px;
+    z-index: 9;
+    position: relative; /* Required for z index to be infront of buttons. */
+    display: inline-block; /* Attempt to ensure the vertical positioning of buttons and fields is correct. */
+}
+body[data-ui-mode='1'] .search-button-container {
+    top: -17px;
+}
+body[data-ui-mode='1'] #search-form {
+    width: inherit;
+}
+body[data-ui-mode='1'] #search-buttons-container {
+    position: relative; /* Gives context to absolutely positioned buttons. */
+    z-index: 10; /* In this mode the search fields are z-index 9, currently. */
+}
+body[data-ui-mode='1'] [data-search-form-mode='0'] .result-list, body[data-ui-mode='1'] [data-search-form-mode='0'] .result-list-search-summary-container {
+    -webkit-filter: opacity(3%);
+    pointer-events: none;
+}
+body[data-ui-mode='0'] .cancel-button-container {
+    display: none;
+}
+.cancel-button-container {
+    position: absolute;
+    top: -17px;
+    width: 100px;
+}
+body[data-ui-mode='0'] #search-form-container .search-filters {
+    text-align: left;
+}
+body[data-ui-mode='0'] .search-form-title {
+    display: block;
+}
+body[data-ui-mode='0'] .search-filters {
+    display: none;
+}
+body[data-ui-mode='0'] #search-form-container {
+    top: 20px; /*empirical*/
+    position: relative;
+}
+#btn-cancel-search {
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: helvetica-pro-light;
+    line-height: 100px;
+    border: none;
+}
+body[data-hover-is-enabled='true'] .search-button-container:hover .button-icon, body[data-hover-is-enabled='true'] .cancel-button-container:hover .button-icon {
+    text-decoration: underline;
+}
+#btn-search {
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-family: helvetica-pro-light;
+    line-height: 100px;
+    border: none;
+    position: relative; /*cancels out a current global postion absolute style*/
+}
+.search-button-container .label {
+    margin-left: 1px; /*this is because the font rendering makes it look off center*/
+}
+.search-button-container .label {
+    top: -4px;
+    position: relative;
+}
+.search-button-container .btn~.button-icon {
+    font-size: 1.2rem;
+}
+.search-button-container {
+    position: absolute;
+    right: -8px;
+    top: calc(100% - 77px); /* Search button container is 100px high. We need to move up half height of search field (53/2) plus half height of button (100/2) === 77px. */
+    width: 100px;
+    height: 100px;
+}
+body[data-ui-mode='1'] .search-button-container {
+    top: -17px;
+    right: 0px;
+}
+.search-filters >:first-child {
+    display: inline-block;
+    float: left;
+}
+.search-filters {
+    margin: 20px 20px 20px 0px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+.search-form-title {
+    display: none;
+    margin: 8px 0 20px 0;
+}
+body[data-hover-is-enabled='true'] .search-filters input[type=radio]:not(:checked) + label:hover {
+    border-color: rgba(255, 200, 0, 0.3);
+}
+.search-filters label {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 26px;
+    border: 0;
+    text-align: center;
+    height: 22px;
+    width: 57px;
+    margin: 8px 2px 10px 0;
+    color: rgba(0, 122, 255, 1);
+}
+/*"narrow-screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+@media only screen and (max-device-width: 568px) {    
+    body[data-ui-mode='0'] #search-form {
+        width: 100%;
+    }
+    body[data-ui-mode='1'] #search-buttons-container {
+        left: 190px;
+    }
+    body[data-ui-mode='1'] #search-buttons-container {
+        left: 190px;
+    }
+    body[data-ui-mode='1'] #search-form {
+        left: 45px;
+    }
+    #keywords {
+        z-index: 1; /*attempt to move infront of the buttons for search and cancel in the in use state*/        
+        padding-right: 69px;
+    }
+    #keywords, .search-filters {
+        width: 236px;
+    }
+    .search-filters ol {
+        text-align: center;
+    }
+    #search-buttons-container {
+        left: 280px;
+    }
+    body[data-ui-mode='0'] .search-button-container {
+        left: -85px;
+    }
+    body[data-ui-mode='1'] .search-button-container {
+        left: -18px
+    }
+    .cancel-button-container {
+        display: none;
+    }
+    .legal {
+        left: 10px;
+    }
+    .f {
+        bottom: 15px;
+    }
+}

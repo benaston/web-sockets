@@ -1,0 +1,161 @@
+body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='true'] .c--result {
+    transition: max-height .5s cubic-bezier(0.2, 0.3, 0.25, 0.9);
+    /* we use max-height because involve transition to auto height*/
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .c--result {
+    transition: -webkit-transform .5s ease-out .75s, max-height .5s cubic-bezier(0.2, 0.3, 0.25, 0.9);
+    /* we use max-height because involve transition to auto height*/
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .t.hidden {
+    transition: -webkit-transform .5s ease-in, max-height .5s cubic-bezier(0.2, 0.3, 0.25, 0.9) 1s;
+    /* we use max-height because involve transition to auto height*/
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .t[data-is-in-comparison-list='true'] .is-in-comparison-list, body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .t[data-is-in-comparison-list='false'] .is-in-comparison-list {
+    transition: opacity .5s ease-in 3s, height .5s ease-out 3s;
+    /*Delay the appearance of the icon, to avoid two areas of the UI updating at once. We want the user to notice the comparison list heads-up. */
+}
+body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .t[data-is-bookmark='true'] .is-bookmark, body[data-ui-mode='1'][data-are-transitions-enabled='true'][data-is-mobile-device='false'] .t[data-is-bookmark='false'] .is-bookmark {
+    transition: opacity .5s ease-in 3s, height .5s ease-out 3s;
+    ;
+    /*Delay the appearance of the icon, to avoid two areas of the UI updating at once.*/
+}
+.c--result .rate {
+    float: left;
+}
+.c--result .location {
+    color: rgba(150, 150, 150, 1);
+    width: 169px;
+    margin: 0;
+    float: right;
+    line-height: 1.5rem;
+}
+.c--result .rate-unit {
+    font-size: .65rem; /*empirical*/
+}
+.c--result .updated {
+    font-size: .8rem;
+    margin-left: 10px; /*Ensure separation from organization.*/
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    white-space: nowrap !important; /*Prevents breaking the last updated across lines.*/
+}
+.c--result .state {
+    text-align: center;    
+    font-size: .8rem;
+    background-color: rgba(0, 122, 255, 1);
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    display: inline;
+}
+.c--result .states {
+    text-align: right;
+    padding: 10px 0 7px 0;
+    box-sizing: border-box;
+    opacity: 1;
+    display: inline-block;
+    width: 100%;
+}
+.c--result [data-is-bookmark='true'] .is-bookmark, 
+.c--result [data-is-in-comparison-list='true'] .is-in-comparison-list, 
+.c--result [data-is-actioned='true'] .is-actioned {
+    opacity: 1; /* Display controlled by JS */   
+    /*height: 45px;*/ /* Height is transitioned by CSS */
+}
+.c--result[data-is-read='true'] .is-unread {
+    display: none;
+}
+
+/*ID specifier to increase specificity for the whitespace style.*/
+
+.c--result .title {
+    color: black;
+    margin: 0 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.c--result .organisation {
+    display: inline-block;
+    width: 155px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: .8rem;
+}
+
+.c--result .line-3 {
+    text-align: right;
+}
+.c--result a {
+    display: block;
+    color: #333;
+    position: relative;
+    /* required to ensure correct z-indexing vs the bookmark symbol */
+}
+body[data-hover-is-enabled='true'] .c--result a:hover {
+    text-decoration: none;
+    color: #333;
+}
+.c--result:last-of-type hr {
+    display: none;
+}
+.c--result hr {
+    position: absolute;
+    right: 0;
+    width: 312px;
+    bottom: 0;
+    color: rgba(0, 0, 0, .1);
+    height: 1px;
+    padding: 0;
+    margin: 0;
+}
+.c--result {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    -webkit-user-select: none;
+    line-height: 1.5;
+    /*important for resetting this with a line-height of 0 for the list itself*/
+    max-height: 269px;
+    /*larger than it will ever get*/
+    width: 100%; /* Prevent getting wider than the result list. */
+}
+.c--result.hidden {
+    max-height: 0;
+    overflow: hidden;
+}
+body[data-is-mobile-device='false'] .c--result.hidden {
+    -webkit-transform: translateX(-400px);
+}
+.c--result a {
+    display: inline-block;
+    padding: 15px 7px 6px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.c--result .line-2 {
+    margin-bottom: 9px;
+    font-size: .8rem;
+    color: rgba(150, 150, 150, 1);
+}
+.c--result a:focus, 
+.c--result a:active {
+    box-shadow: 0 0 0 2px rgb(244, 244, 248) inset;
+}
+/*"narrow-screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+@media only screen and (max-device-width: 568px) {
+    .c--result {
+        max-height: 450px;
+        /*larger than it will ever get*/
+    }
+    .c--result hr {
+        width: 167px;
+    }
+}

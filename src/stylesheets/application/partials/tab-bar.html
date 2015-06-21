@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <link rel="stylesheet" href="../reset/third-party-reset.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-non-form.css" />
+    <link rel="stylesheet" href="../reset/wizerati-style-reset-form.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-buttons-rotating.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-form-elements.css" />
+    <link rel="stylesheet" href="../vendor/lucid-style-faces.css" />
+    <link rel="stylesheet" href="./wizerati-style-tab-bar.css" />
+    <link rel="stylesheet" href="./wizerati-style-comparison-list-heads-up.css" />
+</head>
+<body 
+    data-ui-mode="1" 
+    data-are-transitions-enabled="true" 
+    data-modal="-1" 
+    data-hover-is-enabled="true" 
+    data-is-mobile-device="false" 
+    data-items-of-interest-mode="0" 
+    class="test"
+    >
+<nav id="c--t-b" data-selected-tab="search">
+    <ul>
+        <li class="i" id="tab-home">
+            <form action="/" method="GET">                
+                <div class="c--r-b small">
+                    <button type="submit" id="tab-btn-home" tabindex="1" class="btn" data-is-waiting="false"></button>
+                    <span class="focus-indicator"></span>
+                    <span class="icon ionicons">&#xf322;</span></div></form></li>
+        <li class="i" id="tab-search">
+            <form action="/search" method="GET">                
+                <div class="c--r-b small">
+                    <button type="submit" id="tab-btn-search" tabindex="1" class="btn" data-is-waiting="false"></button>
+                    <span class="focus-indicator"></span>
+                    <span class="icon ionicons">&#xf1da;</span><label for="tab-btn-search" class="icon lower">Search</label></div></form></li>
+        <li class="i" id="tab-saved">
+            <form action="/bookmarks" method="GET">
+                <div class="c--r-b small">
+                    <button type="submit" id="tab-btn-saved" tabindex="1" class="btn" data-is-waiting="false"></button>
+                    <span class="focus-indicator"></span>
+                    <span class="icon">0</span><label for="tab-btn-saved" class="icon lower">Saved</label>
+                </div>
+            </form>
+        </li><li class="i" id="tab-me">
+            <form action="/account" method="GET">
+                <div class="c--r-b small">
+                    <button type="submit" id="tab-btn-me" tabindex="1" class="btn" data-is-waiting="false"></button>
+                    <span class="focus-indicator"></span>
+                    <span class="icon">Me</span></div></form></li>
+    </ul>
+</nav>
+<nav id="c--c-l-h-u" data-count="1/4">
+    <form action="/comparison" method="GET">
+        <div class="c--r-b long centered-label">
+            <button type="submit" id="btn-comparison-list" tabindex="1" class="btn" data-is-waiting="false" data-is-selected="false"></button>
+            <span class="focus-indicator"></span>
+            <label for="btn-comparison-list" class="icon">
+                <ul class="menu">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="label">Comparison List</div>
+            </label>        
+        </div>
+    </form>
+</nav>
+</body>
+</html>

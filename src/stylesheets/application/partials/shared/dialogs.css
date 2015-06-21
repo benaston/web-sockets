@@ -1,0 +1,45 @@
+.modal.modal-full-screen {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    height: 100%;
+}
+
+.modal-container.modal-visible .modal-bg {
+    display: block;
+    -webkit-filter: blur(20px);
+    transition: -webkit-filter .05s linear;
+    pointer-events: none;
+}
+
+.modal-container.modal-visible .modal {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal .modal-content-container.centered {
+    position: relative;
+    margin: auto;
+    width: 450px;
+}
+
+.modal .modal-content-container.medium {
+    width: 450px;
+}
+
+.modal .modal-content-panel {
+    margin: auto;
+    width: 450px;
+    top: 25px;
+    position: absolute;
+    background-color: rgba(255,255,255,.9);
+    padding:20px;
+}
+
+body.modal-container.modal-visible {
+    overflow: hidden;
+}

@@ -1,0 +1,29 @@
+body[data-ui-mode='-1'] #main-container {
+    -webkit-filter: opacity(0%); /*we use a filter because the normal opacity transition is janky*/
+    transition: none;
+}
+
+#main-container[data-visibility-mode='0'], #main-container[data-visibility-mode='1'] {
+    -webkit-filter: opacity(0%); /*we use a filter because the normal opacity transition is janky*/
+    transition: -webkit-filter .1s ease-out;
+}
+
+body:not([data-ui-mode='-1']) #main-container[data-visibility-mode='2'] {
+    -webkit-filter: opacity(100%); /*we use a filter because the normal opacity transition is janky*/
+    transition: -webkit-filter .1s ease-out;
+    -webkit-backface-visibility: hidden; /*this fixes a chrome bug whereby the content remains blurry after the filter transition is complete*/
+}
+
+/*This prevents the inline-block layout elements from wrapping on narrow screens.*/
+#main-container {
+    white-space: nowrap;
+    height: 100%;
+}
+
+*:not(#main-container) {
+    white-space: normal;
+}
+
+body[data-ui-mode='0'] #main-container {
+    overflow: hidden; /*prevents scrollbars from being shown on greenfield state*/
+}

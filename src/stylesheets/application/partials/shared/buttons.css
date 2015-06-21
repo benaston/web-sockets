@@ -1,0 +1,178 @@
+.btn {
+    padding: 0;
+    cursor: pointer;
+    color: #333;
+    margin: 0; /*important to avoid unexpected layout*/
+    font-family: 'ionicons';
+    background-color: transparent;
+    -webkit-user-select: none;
+    text-align: center;
+    box-sizing: border-box;
+    /*border: 1px solid rgba(2, 86, 244, .1);*/
+    border: 0;
+    display: inline-block;
+    transition: border-color 0.1s ease-out .2s, box-shadow .1s ease-out, border-left-width .2s ease-out;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*removes dark active overlay when tapping buttons on ios*/
+}
+
+.btn-s {
+    width: 67px; /*chosen to match ipad pass entry size, plus centered on left*/
+    border-radius: 85px;
+    line-height: 67px;
+    height: 67px;
+    font-size: 2rem;
+    color: rgba(0, 109, 204, 0.95);
+    border-color: rgba(255,255,255,.1);
+    left: 0;
+    position: absolute;
+}
+
+/*We support nesting and sibling label relationships.*/
+.btn-s ~ .lbl,
+.btn-s > .lbl {
+    margin-top: 4px;
+    font-size: .9rem;
+    color: rgba(0, 109, 204, 0.95);
+    -webkit-user-select: none;
+    line-height: 1.34rem; /*required for span labels*/
+}
+
+.btn-100 {
+    width: 110px;
+    /*border-radius: 100px !important;*/
+    /*line-height: 97px !important;*/
+    /*height: 110px !important;*/
+    border-radius: 100px;
+    line-height: 97px;
+    height: 110px;
+    font-size: 2.1em;
+}
+
+.btn-100 ~ .lbl {
+    margin-top: 4px;
+    font-size: 2.3rem;
+    color: rgba(0, 109, 204, 0.95);
+}
+
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.3;
+}
+
+a.btn:hover,
+.btn:hover {
+    text-decoration: none;
+}
+
+/*Do not show the hand when hovering over a disabled button.*/
+.btn:not(:enabled):hover,
+.btn:not(:enabled) ~ label:hover {
+    cursor: auto;
+}
+
+.btn:enabled:focus {
+    outline: none;
+}
+
+.focus-indicator {
+    display: inline-block;
+}
+
+/*.btn:not(.btn-rotating):enabled:focus:after,*/
+/*.btn.btn-rotating:enabled:focus + .focus-indicator:after,*/
+/*input[type='radio']:enabled:focus + label:after {
+    content: ' ';
+    display: block;
+    background-color: rgba(2, 86, 244, .1);
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}*/
+
+.lbl:focus,
+label:focus {
+    outline: 5px auto rgb(230, 240, 248);
+    outline-offset: 2px;
+}
+
+.btn ~ .button-icon {
+    display: inline-block;
+    font-family: 'helvetica-pro-light';
+    position: relative;
+    pointer-events: none;
+    /*left: 26px;*/
+    /*top: 41px;*/
+    color: rgba(0, 122, 255, 1);
+    position: absolute;
+}
+
+.btn-primary:enabled:not(.checked):hover,
+a.btn-primary:not(.disabled):not(.checked):hover {
+    color: rgba(0, 109, 204, 1);
+}
+
+.btn-success ~ .button-icon {
+    color: rgba(0, 200, 0, 1);
+}
+
+.btn-success {
+    border-color: rgba(0, 200, 0, 0.45) rgba(0, 200, 0, 0.45) rgba(0, 200, 0, 0.45) !important;
+}
+
+.btn-neutral ~ .button-icon {
+    color: #333;
+}
+
+.btn-neutral {
+    border-color: rgba(99, 99, 99, 1);
+}
+
+.btn-success:enabled:hover {
+    border-color: rgba(0, 200, 0, 0.85) rgba(0, 200, 0, 0.85) rgba(0, 200, 0, 0.85) !important;
+}
+
+.btn-danger {
+    border-color: rgba(189, 54, 47, .85) rgba(189, 54, 47, .85) rgba(189, 54, 47, .85) !important;
+}
+
+.btn-danger:enabled:hover, .btn-danger:not(:disabled):hover {
+    border-color: rgba(189, 54, 47, .95) rgba(189, 54, 47, .95) rgba(189, 54, 47, .95) !important;
+}
+
+*[data-is-waiting='success'] .btn-success, *[data-is-waiting='primary'] .btn-primary {
+    border: 1px solid rgba(2, 86, 244, .9);
+    border-left: 0;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: rotate;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+
+
+.radio:enabled + .lbl:active.halo, .btn.halo:enabled:active {
+    box-shadow: 0 0px 0px 45px rgba(0, 109, 204, .2);
+    transition: border-color 0.1s linear, box-shadow 0s linear, border-left-width .2s ease-out;
+}
+
+@media not screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /*.btn:enabled:active, a.btn:not(.disabled):active {*/
+    /*box-shadow: 0 2px 0px 2px rgba(0, 0, 0, 0.05) inset;*/
+    /*-webkit-transition: none;*/
+    /*}*/
+}
+
+/*media queries must be on a single line to avoid safari bug*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .btn, .lbl {
+        /*delay on border-color avoids a flash during the interval between resetting the is-waiting flag on waiting buttons*/
+        transition: border-color 0.1s ease-out .2s, box-shadow .3s ease-out, border-left-width .2s ease-out;
+    }
+
+    .radio:enabled + .lbl:active, .btn:enabled:active, a.btn:not(.disabled):active {
+        box-shadow: none; /* touch start and end events take care of this*/
+    }
+}

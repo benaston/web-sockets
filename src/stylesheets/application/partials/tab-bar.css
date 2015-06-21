@@ -1,0 +1,106 @@
+/* #c--t-b stands for component-tab-bar */
+body.test * {
+    box-shadow: 0 0 0 1px inset;
+}
+#c--t-b {
+    display: inline-table; /* Fixes fixed positioning issue on iOS. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 73px;
+    z-index: 5; /*5=tab-bar, 4=my-account-panel 3=search-form-panel, 2=bookmarks-panel, 1=result-list-panel, 0=ioi-panel*/
+    background: rgba(249, 249, 249, 1);
+    min-height: 338px; /* Empirical. */
+    -webkit-filter: opacity(0%);
+    pointer-events: none;
+    -webkit-user-select: none;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(0, 95, 167, .35);
+    -webkit-backface-visibility: hidden; /* Fix blur resulting from an unknown source in Chrome. */
+}
+body[data-ui-mode='1'] #c--t-b {
+    -webkit-filter: opacity(100%);
+    pointer-events: auto;
+}
+#c--t-b[data-selected-tab='home'] #tab-home .icon,
+#c--t-b[data-selected-tab='search'] #tab-search .icon,
+#c--t-b[data-selected-tab='saved'] #tab-saved .icon,
+#c--t-b[data-selected-tab='me'] #tab-me .icon {
+    color: rgb(0, 122, 255);
+}
+#c--t-b .i {
+    display: block;
+}
+#c--t-b #tab-me {
+    position: absolute;
+    bottom: 10px;
+}
+#c--t-b #tab-home .icon {
+    font-size: 3.8rem;
+    top: calc(50% - 1.9rem);
+}
+#c--t-b .icon {    
+    color: slategray; 
+}
+#c--t-b #tab-saved.pulse {
+    -webkit-animation: saved-tab-pulse .5s 1 0;
+}
+#c--t-b #tab-btn-me {
+    font-size: 2.5rem;
+}
+#c--t-b ul {
+    width: 100%; /*ensure buttons centered even when labels not present*/
+}
+#c--t-b #tab-btn-saved ~ .icon:not(.lower) {
+    font-size: 2rem;    
+    top: calc(50% - 1rem);
+}
+#c--t-b #tab-btn-saved:hover ~ .icon:not(.lower) {
+    text-decoration: none;
+}
+#c--t-b #tab-btn-me ~ .icon:not(.lower) {
+    font-size: 1.2rem;    
+    top: calc(50% - .6rem);
+}
+@-webkit-keyframes saved-tab-pulse {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@media only screen and (max-device-height: 568px) {
+    #c--t-b .icon.lower {
+        display: none;
+    }
+
+    #c--t-b {
+        min-height: 300px !important; /*iPhone landscape - minus status bar - note tethering not supported here!*/
+    }
+}
+/*"narrow-screen" devices like iphone*/
+/*media queries must be on a single lime to avoid safari bug*/
+@media only screen and (max-device-width: 568px) {
+    #c--t-b {
+        width: 45px; /*height of lower panel on iOS Safari*/
+    }
+}
+@media only screen and (max-device-height: 568px ) and (orientation: landscape) {
+    #c--t-b ul:first-of-type {
+        margin-top: 5px;
+    }
+
+    #c--t-b h1 {
+        display: none !important;
+    }
+}

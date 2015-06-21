@@ -1,0 +1,444 @@
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #my-account-panel-container[data-mode='0'] #my-account-panel {
+    transition: -webkit-filter .2s ease-out, z-index 0 linear 0s;
+}
+
+body[data-ui-mode='1'][data-are-transitions-enabled='true'] #my-account-panel-container[data-mode='1'] #my-account-panel {
+    transition: -webkit-filter .2s ease-out, z-index 0 linear .3s;
+}
+
+#my-account-panel-container {
+    vertical-align: top;
+    width: 0;
+    height: 100%;
+    display: inline-block;
+}
+
+#my-account-panel-container[data-mode='0'] #my-account-panel {
+    -webkit-filter: opacity(100%);
+    pointer-events: auto;
+}
+
+/*body[data-ui-mode='1'] #my-account-panel-container[data-mode='1'] #my-account-panel {*/
+#my-account-panel-container[data-mode='1'] #my-account-panel {
+    -webkit-filter: opacity(0%);
+    pointer-events: none;
+    z-index: -1; /*Transition ensures this change in the z-index is not observed - it merely helps with inspecting DOM elements during development. */
+}
+
+#my-account-panel {
+    z-index: 4; /*5=tab-bar, 4=my-account-panel 3=search-form-panel, 2=bookmarks-panel, 1=result-list-panel, 0=ioi-panel*/
+}
+
+body[data-ui-mode='0'] #my-account-panel {
+    display: none;
+}
+
+.download-icon {
+    font-size: 1.6rem;
+    line-height: 1.3rem;
+    vertical-align: bottom;
+}
+
+body[data-ui-mode='1'] #my-account-panel {
+    display: inline-table;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, .97);
+    -webkit-backface-visibility: hidden;
+    min-width: 819px;
+}
+
+#my-account-panel[data-selected-tab='0'] #my-account-tabs-container #my-details,
+#my-account-panel[data-selected-tab='1'] #my-account-tabs-container #security,
+#my-account-panel[data-selected-tab='2'] #my-account-tabs-container #my-cvs,
+#my-account-panel[data-selected-tab='3'] #my-account-tabs-container #job-applications,
+#my-account-panel[data-selected-tab='4'] #my-account-tabs-container #job-adverts,
+#my-account-panel[data-selected-tab='5'] #my-account-tabs-container #billing {
+    -webkit-filter: opacity(100%);
+    pointer-events: auto;
+    z-index: 0;
+
+}
+
+#my-account-panel[data-selected-tab='0'] #my-account-panel-header .ni:nth-child(1),
+#my-account-panel[data-selected-tab='1'] #my-account-panel-header .ni:nth-child(2),
+#my-account-panel[data-selected-tab='2'] #my-account-panel-header .ni:nth-child(3),
+#my-account-panel[data-selected-tab='3'] #my-account-panel-header .ni:nth-child(4),
+#my-account-panel[data-selected-tab='4'] #my-account-panel-header .ni:nth-child(5),
+#my-account-panel[data-selected-tab='5'] #my-account-panel-header .ni:nth-child(6) {
+    background-color: rgba(0, 122, 255, 1);
+}
+
+#my-details, #security, #my-cvs, #job-applications, #job-adverts, #billing {
+    width: 600px; /* Empirical. Less than width of account section header. */
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -webkit-filter: opacity(0%);
+    pointer-events: none;
+    text-align: center;
+    z-index: -1;
+}
+
+#my-account-panel-header {
+    height: 97px;
+    text-align: center;
+    width: 100%;
+    display: table;
+}
+
+#my-account-panel-header nav {
+
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#my-account-panel-header-item-list .ni:not(:last-child) {
+    border-right: 1px solid rgba(0, 122, 255, 1);
+}
+
+#name, #company, #url, #email, #location {
+    box-sizing: border-box;
+    padding-left: 100px;
+}
+
+#password-c, #password-n1, #password-n2 {
+    box-sizing: border-box;
+    padding-left: 182px;
+}
+
+#my-account-panel-header-item-list .ni:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#my-account-panel-header-item-list .ni:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#my-account-panel-header-item-list .ni {
+    line-height: 44px;
+
+}
+
+#my-account-panel-header-item-list .btn {
+    color: rgba(0, 122, 255, 1);
+}
+
+#my-account-panel-header-item-list {
+    height: 44px;
+    box-shadow: 0 0 0 1px rgba(0, 122, 255, 1);
+    border-radius: 5px;
+    position: relative;    
+}
+
+#my-account-tabs-container {
+    position: relative;
+    width: 559px;
+    margin: auto;
+}
+
+.btn-critical {
+    color: red;
+}
+
+#btn-delete-my-account:hover {
+    text-decoration: underline;
+}
+
+.input-label-group:nth-of-type(1) {
+    margin-top:20px;
+}
+
+#frm-change-password > form > div:nth-of-type(2) {
+    margin-top: 30px; /* Nudge form fields down for space for cancel/done buttons. */
+}
+
+#my-account-buttons-container-my-details {
+    
+   top:-32px;
+    width: 559px;
+height: 62px;
+margin: auto;
+position: absolute; /* Take buttons out of the flow to minimize wasted height. */
+display: block;
+
+}
+
+#save-my-account-button-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#cancel-my-account-button-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#btn-save-my-account {
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: helvetica-pro-light;
+    line-height: 100px;
+    border: 0;
+}
+
+#btn-cancel-my-account {
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: helvetica-pro-light;
+    line-height: 100px;
+    border: 0;
+}
+
+.input-label-group .lbl {
+    position: absolute;
+    left: 91px;
+    top: 33px;
+}
+
+.input-label-group {
+    position: relative;
+}
+
+#my-account-panel[data-selected-tab='0'] #btn-nav-my-details,
+#my-account-panel[data-selected-tab='1'] #btn-nav-security,
+#my-account-panel[data-selected-tab='2'] #btn-nav-cvs,
+#my-account-panel[data-selected-tab='3']  #btn-nav-job-applications,
+#my-account-panel[data-selected-tab='4']  #btn-nav-job-adverts,
+#my-account-panel[data-selected-tab='5']  #btn-nav-billing {
+    color: white;
+}
+
+#btn-nav-my-details,
+#btn-nav-security,
+#btn-nav-cvs,
+#btn-nav-job-applications,
+#btn-nav-job-adverts,
+#btn-nav-billing {
+    width: 100%;
+    padding: 0 20px 0 20px;
+    height: 44px;
+    line-height: 46px;
+    font-family: helvetica-pro-light;
+    border: none;
+    font-size: 1rem;
+}
+
+#my-details #my-account-buttons-container-my-details,
+#security #my-account-buttons-container-security,
+#my-cvs #my-account-buttons-container-cvs,
+#job-applications #my-account-buttons-container-job-applications,
+#job-applications #my-account-buttons-container-job-adverts,
+#job-applications #my-account-buttons-container-billing {
+    /*-webkit-filter: opacity(0%);
+    pointer-events: none;*/
+}
+
+#my-details[data-is-dirty='true'] #my-account-buttons-container-my-details,
+#security[data-is-dirty='true'] #my-account-buttons-container-security,
+#my-cvs[data-is-dirty='true'] #my-account-buttons-container-cvs,
+#job-applications[data-is-dirty='true']  #my-account-buttons-container-job-applications,
+#job-applications[data-is-dirty='true']  #my-account-buttons-container-job-adverts,
+#job-applications[data-is-dirty='true']  #my-account-buttons-container-billing {
+    /*-webkit-filter: opacity(100%);
+    pointer-events: auto;*/
+}
+
+#cv-list {
+    display: block;
+    width: 400px;
+    box-shadow: 0 0 0 1px rgba(2, 86, 244, .1);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#application-list {
+    display: block;
+    width: 400px;
+    box-shadow: 0 0 0 1px rgba(2, 86, 244, .1);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.cv-i-new .title {
+    height: 100%;
+    line-height: 100%;
+}
+
+.cv-i-new {
+    width: 400px;
+    height: 62px;
+    display: table;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.cv-i {
+    width: 400px;
+    height: 62px;
+    display: table;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.cv .ico {
+    font-size: 2rem;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.cv {
+    position: relative;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.application {
+    position: relative;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.application-period:first-child {
+    top: 22px; /*empirical to match other tabs*/
+    position: relative;
+}
+
+.application-i:not(:last-child) hr {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 390px;
+    bottom: 0;
+    color: rgba(0, 0, 0, .1);
+    height: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+.application-i:last-child hr {
+    display: none;
+}
+
+.application .added {
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cv-i:not(:last-child) hr {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 390px;
+    bottom: 0;
+    color: rgba(0, 0, 0, .1);
+    height: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+.cv-i:last-child hr {
+    display: none;
+}
+
+#my-account-buttons-container-my-details {
+    /*-webkit-filter: opacity(0%);
+    pointer-events: none;*/
+}
+
+#my-account-buttons-container-my-cvs {
+    display: block;
+    height: 62px;
+}
+
+.added {
+    color: #999;
+}
+
+.download-link {
+    float: right;
+}
+
+.application-period-summary {
+    text-align: left;
+    margin-top: 22px;
+    background: transparent;
+    padding: 10px;
+    line-height: 1rem;
+    color: #333;
+    font-family: helvetica-bold;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.security-heading {
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: transparent;
+    line-height: 1rem;
+    color: #333;
+    font-family: helvetica-bold;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+#frm-change-password {
+    margin-bottom: 20px;
+}
+
+#btn-delete-my-account {
+    width: 167px;
+    height: 41px;
+    font-size: 1rem;
+    color: red;
+    border-radius: 5px;
+    line-height: 41px;
+    margin-top: 20px;
+}
+
+p {
+    text-align: left;
+}
+
+#invoice-history td, #invoice-history th {
+    padding: 10px;
+}
+
+#invoice-history {
+    width: 400px;
+    margin: 20px auto 20px auto;
+    box-shadow: 0 0 0 1px rgba(2, 86, 244, .1);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#job-advert-list {
+    display: block;
+    width: 400px;
+    box-shadow: 0 0 0 1px rgba(2, 86, 244, .1);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+}
+

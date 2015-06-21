@@ -1,0 +1,33 @@
+body {
+    position: absolute;
+    width: 100%; /*width and height of 100% required to ensure modal blur covers viewport*/
+    height: 100%;
+    background-color: white;
+}
+
+body[data-ui-mode='-1'],
+body[data-ui-mode='0'] {
+    overflow: hidden;
+}
+
+html:not(.mac) ::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+html:not(.mac) ::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+/* Handle */
+html:not(.mac) ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(200,200,200,0.8); 
+}
+
+html:not(.mac) ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(200,200,200,0.4);
+}

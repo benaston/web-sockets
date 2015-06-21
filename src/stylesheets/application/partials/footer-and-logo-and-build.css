@@ -1,0 +1,66 @@
+body[data-ui-mode='0'] .f, body[data-ui-mode='1'] .f {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body[data-ui-mode='1'] .f {
+    display: none;
+}
+
+.f {
+    bottom: 40px;
+    position: absolute;
+    margin: auto;
+    z-index: 4;
+    opacity: 0;
+    width: 100%;
+    pointer-events: none;
+    transition: opacity .1s linear;
+    color: rgba(82, 110, 125, 1);
+    text-align: center;
+}
+
+.f a, .f span {
+    color: #333;
+}
+
+.legal {
+    position: relative;
+    left: 20px;
+    color: slategray;
+    text-shadow: 0 0 82px white;
+}
+
+.logo {
+    /*margin-top: 10px;*/
+    margin-top: 4px; /*empirical*/
+    line-height: 3.9rem;
+    font-size: 3.9em;
+    color: rgba(0, 122, 255, 1);
+    font-family: helvetica-bold;
+}
+
+.tag-line {
+    font-size: 1rem;
+    color: rgba(0, 122, 255, 1);
+    font-family: helvetica-bold;
+}
+
+body[data-ui-mode='0'] .logo,
+body[data-ui-mode='0'] .tag-line {
+    display: block;
+}
+
+body[data-ui-mode='1'] .logo,
+body[data-ui-mode='1'] .tag-line {
+    display: none;
+}
+
+.build {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin: auto;
+    z-index: 9;
+    background-color: white;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "wizerati",
+  "version": "0.0.1",
+  "description": "IT contract job search.",
+  "homepage": "https://www.wizerati.com/",
+  "license": "This is proprietary software. Copyright Ben Aston, 2015.",
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/index.ejs",
+  "private": true,
+  "dependencies": {},
+  "author": {
+    "name": "Ben Aston",
+    "email": "ben@bj.ma",
+    "url": "http://www.bj.ma"
+  },
+  "repository": "git@github.com:benaston/wizerati-ui-prototype.git",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-css-base64": "^1.3.2",
+    "gulp-inline-source": "^1.3.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-less": "^3.0.2",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.3",
+    "gulp-tap": "^0.1.3",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.4",
+    "inline-web-components": "^0.1.1",
+    "less-plugin-clean-css": "^1.5.0",
+    "less-plugin-inline-urls": "^1.1.0",
+    "merge-stream": "^0.1.7",
+    "partial-application": "0.0.14",
+    "require-dir": "^0.3.0",
+    "streamqueue": "^1.1.0"
+  }
+}

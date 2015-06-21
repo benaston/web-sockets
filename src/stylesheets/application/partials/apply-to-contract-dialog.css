@@ -1,0 +1,47 @@
+#apply-to-contract-dialog {
+    -webkit-filter: opacity(0%);
+    -webkit-backface-visibility: hidden; /*bypass chrome rendering bug*/
+    pointer-events: none;
+    transition: -webkit-filter .2s ease-out;
+    visibility: hidden; /*enables click through for inspector in webkit*/
+    overflow: hidden; /*important to prevent vertical scroll-bars from appearing at small vertical heights*/
+}
+
+.apply-to-contract-dialog-content-panel-container {
+    width: 550px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, .9);
+    padding: 20px 40px 20px 40px;
+    border-radius: 0 0 150px 150px;
+}
+
+#apply-to-contract-dialog .error-message {
+    -webkit-filter: opacity(0%);
+}
+
+body[data-modal='5'] #apply-to-contract-dialog {
+    -webkit-filter: opacity(100%);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/*body:not([data-ui-mode='-1']):not([data-modal='-1']) #main-container[data-visibility-mode='2'] {*/
+    /*-webkit-filter: opacity(100%) blur(20px);*/
+    /*transition: -webkit-filter .1s ease-out;*/
+/*}*/
+
+.modal-content-panel h1 {
+    margin-bottom: 40px;
+}
+
+.message-container p {
+    margin-bottom: 20px;
+}

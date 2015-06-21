@@ -1,0 +1,120 @@
+label.radio {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    line-height: 35px;
+    border: 2px solid #eee;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px;
+    -webkit-user-select: none;
+}
+
+button.checked, .btn.checked {
+    /*background-color: rgba(0, 109, 204, 0.95);*/
+    /*color: white;*/
+    /*box-shadow: none;*/
+}
+
+.form-button-container {
+    display: block;
+    text-align: right;
+    padding-top: 40px;
+}
+
+.form-button-container > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-button-container-item {
+    display: inline-block;
+    padding-left: 15px;
+}
+
+.form-button-container:after {
+    content: ".";
+    height: 0;
+    clear: both;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.meta-info {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s linear 0s, visibility 0s linear .2s;
+    position: absolute;
+    top: 0;
+    left: 330px;
+    width: 200px;
+}
+
+input[type='text']:focus + .meta-info,
+input[type='email']:focus + .meta-info,
+input[type='password']:focus + .meta-info,
+textarea:focus + .meta-info {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .2s linear 0s, visibility 0s linear 0s;
+}
+
+input[type="radio"]:focus + .focus-indicator {
+    display: block;
+}
+
+label.radio {
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+    line-height: 77px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px;
+    -webkit-user-select: none;
+}
+
+label.radio:hover {
+    -webkit-transition: box-shadow .1s linear;
+}
+
+label.radio:active {
+    -webkit-transition: box-shadow .1s linear;
+    box-shadow: 0 0 19px 12px rgba(200, 200, 200, .3);
+}
+
+label.radio-inverted {
+    border: 2px solid black;
+    box-shadow: 0 0 9px 2px rgba(200, 200, 200, 0.2);
+    color: rgb(0, 175, 237);
+}
+
+label.radio-inverted:hover {
+    -webkit-transition: box-shadow .1s linear;
+    box-shadow: 0 0 9px 2px rgba(200, 200, 200, 0.3);
+}
+
+label.radio-inverted:active {
+    -webkit-transition: box-shadow .1s linear;
+    box-shadow: 0 0 19px 12px rgba(200, 200, 200, .3);
+}
+
+.form-button-container:after {
+    content: ".";
+    height: 0;
+    clear: both;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.field-and-metadata-container {
+    position: relative;
+}
+
+.ico {
+    font-family: ionicons;
+}
